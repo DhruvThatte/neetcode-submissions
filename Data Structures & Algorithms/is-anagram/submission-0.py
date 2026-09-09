@@ -1,0 +1,18 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # Anagrams must be exactly the same length
+        if len(s) != len(t):
+            return False
+        
+        # Count the frequency of each character in string s
+        count = {}
+        for char in s:
+            count[char] = count.get(char, 0) + 1
+            
+        # Subtract the frequency using string t
+        for char in t:
+            if char not in count or count[char] == 0:
+                return False
+            count[char] -= 1
+            
+        return True
